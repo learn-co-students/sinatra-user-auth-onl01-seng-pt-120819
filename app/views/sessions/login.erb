@@ -1,2 +1,9 @@
 <h1>Log In Below:</h1>
 
+<%#Template for the login form. This template is rendered by the get '/sessions/login' route in the controller. The form on this page sends a POST request that is handled by the post '/sessions' route.%>
+
+<form method="post" action="/sessions">
+    <label for="email">Email: </label><input type="text" id="email" name="email"><br>
+    <label for="password">Password: </label><input type="text" id="password" name="password"><br>
+    <input type="submit" value="Log In">
+</form>
