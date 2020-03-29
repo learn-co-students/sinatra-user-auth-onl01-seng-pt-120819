@@ -16,8 +16,8 @@ class ApplicationController < Sinatra::Base
     erb :'/registrations/signup'
   end
 
-  post '/registrations' do
-   
+  post '/registrations/' do
+    
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
@@ -31,7 +31,10 @@ class ApplicationController < Sinatra::Base
     erb :'sessions/login'
   end
 
-  post '/sessions' do
+  post '/sessions/' do
+   
+   puts params
+   
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user
       session[:user_id] = @user.id
