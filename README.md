@@ -19,7 +19,7 @@ What does it mean for a user to 'log in'? The action of logging in is the simple
 
 1. User visits the login page and fills out a form with their email and password. They hit 'submit' to `POST` that data to a controller route.
 2. That controller route accesses the user's email and password from the `params` hash. That info is used to find the appropriate user from the database with a line such as `User.find_by(email: params[:email], password: params[:password])`. **Then, that user's ID is stored as the value of `session[:user_id]`.**
-3. As a result, we can introspect on the `session` hash in *any other controller route* and grab the current user by matching up a user ID with the value in `session[:user_id]`. That means that, for the duration of the session (i.e., the time between when someone logs in to and logs out of your app), the app will know who the current user is on every page.
+3. As a result, we can introspect on the `session` hash in *any other controller route* and grab the current user by matching up a user ID with the value in `session[:user_id]`. That means that, for the duration of the session (i.e., the time between when someone logs in to and logs out of your app), the app will know who the current user is on every page.t[]
 
 #### A Note On Password Encryption
 
@@ -103,11 +103,11 @@ Our `User` model has a few attributes: a name, email, and password.
 
 #### Step 1: Migration
 
-Write a migration that creates a `Users` table with columns for name, email, and password. Run `rake db:migrate SINATRA_ENV=test` and then run your test suite.
+Write a migration that creates a `Users` table with columns for name, email, and password. Run `db:migrate SINATRA_ENV=test' and then run your test suite.
 
 You'll see that you're passing a number of tests, including these:
 
-```ruby
+```ruby`
 User
   is invalid without a name
   is invalid without a email
